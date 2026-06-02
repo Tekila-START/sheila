@@ -14,6 +14,91 @@
             box-sizing: border-box;
             -webkit-tap-highlight-color: transparent;
         }
+
+        /* Tela de Confirmação +18 */
+        .age-verification-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.98);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            padding: 20px;
+        }
+
+        .age-verification-modal {
+            background: var(--bg-card);
+            border: 2px solid var(--primary);
+            border-radius: 20px;
+            padding: 40px 30px;
+            text-align: center;
+            max-width: 450px;
+            width: 100%;
+            box-shadow: 0 0 40px rgba(255, 77, 109, 0.3);
+        }
+
+        .age-icon {
+            font-size: 60px;
+            margin-bottom: 20px;
+        }
+
+        .age-title {
+            font-size: 28px;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 16px;
+        }
+
+        .age-text {
+            font-size: 16px;
+            color: var(--text-secondary);
+            margin-bottom: 32px;
+            line-height: 1.5;
+        }
+
+        .age-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .age-btn {
+            padding: 16px 24px;
+            border: none;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-family: inherit;
+        }
+
+        .age-btn-yes {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+        }
+
+        .age-btn-yes:active {
+            transform: scale(0.98);
+        }
+
+        .age-btn-no {
+            background: transparent;
+            color: var(--text-muted);
+            border: 1px solid var(--border);
+        }
+
+        .age-btn-no:active {
+            background: var(--bg-card-hover);
+        }
+
+        .age-verification-overlay.hidden {
+            display: none;
+        }
         
         :root {
             --primary: #ff4d6d;
@@ -56,17 +141,15 @@
         
         .profile-banner {
             width: 100%;
-            height: 200px;
-            background: linear-gradient(135deg, #2a1a1a 0%, #1a1a1a 100%);
+            height: 400px;
             position: relative;
             overflow: hidden;
         }
         
-        .profile-banner-img {
+        .profile-banner-video {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            opacity: 0.8;
         }
         
         .profile-content {
@@ -588,13 +671,31 @@
     </style>
 </head>
 <body>
+    <!-- Tela de Confirmação +18 -->
+    <div class="age-verification-overlay" id="ageVerification">
+        <div class="age-verification-modal">
+            <div class="age-icon">🔞</div>
+            <h2 class="age-title">Acesso Restrito</h2>
+            <p class="age-text">Este site contém conteúdo adulto. Você confirma ter mais de 18 anos?</p>
+            <div class="age-buttons">
+                <button class="age-btn age-btn-yes" onclick="confirmAge(true)">
+                    Sim, tenho mais de 18 anos
+                </button>
+                <button class="age-btn age-btn-no" onclick="confirmAge(false)">
+                    Não, tenho menos de 18 anos
+                </button>
+            </div>
+        </div>
+    </div>
+
     <div class="banner-section">
         <div class="promo-banner">
             🎉 ESSA PROMOÇÃO É VÁLIDA ATÉ 10/05/2026
         </div>
         <div class="profile-banner">
-            <!-- Coloque o caminho da sua imagem de banner aqui -->
-            <img class="profile-banner-img" src="sheila.jpg" alt="Banner">
+            <video autoplay muted loop playsinline class="profile-banner-video">
+                <source src="previa.mp4" type="video/mp4">
+            </video>
         </div>
         
         <div class="profile-content">
@@ -632,7 +733,7 @@
     </header>
 
     <section class="hero">
-        <h1>Escolha seu plano</h1>
+        <h1>Escolha o que você quer ver</h1>
         <p>Acesso ilimitado à nossa coleção de vídeos exclusivos</p>
     </section>
 
@@ -641,7 +742,7 @@
         <div class="plans-list">
             <div class="plan-card">
                 <div class="plan-header">
-                    <div class="plan-name">2 videos</div>
+                    <div class="plan-name">2 videos peladinha</div>
                     <div class="plan-price-wrapper">
                         <div class="plan-price">R$14,90</div>
                         <div class="plan-period">/ acesso único</div>
@@ -659,99 +760,35 @@
             <div class="plan-card featured">
                 <div class="plan-badge">Mais Vendido</div>
                 <div class="plan-header">
-                    <div class="plan-name">Plano Premium</div>
+                    <div class="plan-name">4 Videos Batendo Siririca</div>
                     <div class="plan-price-wrapper">
                         <div class="plan-price">R$23,90</div>
                         <div class="plan-period">/ acesso único</div>
                     </div>
                 </div>
                 <ul class="plan-features">
-                    <li>6 Vídeos</li>
-                    <li>Acesso ilimitado</li>
-                    <li>Qualidade Full HD</li>
-                    <li>Sem anúncios</li>
-                    <li>Suporte por e-mail</li>
+                    <li>4 Vídeos</li>
+                    <li>Video Gozando</li>
+                    <li>Video falando seu nome</li>
                 </ul>
                 <button class="plan-button" onclick="selectPlan('premium')">Escolher Plano</button>
             </div>
             
             <div class="plan-card">
                 <div class="plan-header">
-                    <div class="plan-name">Plano Completo</div>
+                    <div class="plan-name">Plano Ao Vivo</div>
                     <div class="plan-price-wrapper">
                         <div class="plan-price">R$49,90</div>
                         <div class="plan-period">/ acesso único</div>
                     </div>
                 </div>
                 <ul class="plan-features">
-                    <li>Todos os Vídeos</li>
+                    <li>Ligação ao vivo</li>
                     <li>Acesso ilimitado</li>
                     <li>Qualidade 4K</li>
-                    <li>Sem anúncios</li>
-                    <li>Suporte prioritário</li>
                     <li>Novos vídeos incluídos</li>
                 </ul>
                 <button class="plan-button" onclick="selectPlan('completo')">Escolher Plano</button>
-            </div>
-        </div>
-    </section>
-
-    <section class="videos-section">
-        <h2 class="videos-title">Nossa Coleção</h2>
-        <div class="videos-grid">
-            <div class="video-card">
-                <div class="video-thumbnail">
-                    <span class="play-icon">▶️</span>
-                </div>
-                <div class="video-info">
-                    <h3 class="video-title">Vídeo 1 - Introdução</h3>
-                    <p class="video-desc">Conteúdo premium</p>
-                </div>
-            </div>
-            <div class="video-card">
-                <div class="video-thumbnail">
-                    <span class="play-icon">▶️</span>
-                </div>
-                <div class="video-info">
-                    <h3 class="video-title">Vídeo 2 - Técnicas</h3>
-                    <p class="video-desc">Dicas exclusivas</p>
-                </div>
-            </div>
-            <div class="video-card">
-                <div class="video-thumbnail">
-                    <span class="play-icon">▶️</span>
-                </div>
-                <div class="video-info">
-                    <h3 class="video-title">Vídeo 3 - Prática</h3>
-                    <p class="video-desc">Exercícios práticos</p>
-                </div>
-            </div>
-            <div class="video-card">
-                <div class="video-thumbnail locked">
-                    <span class="play-icon">▶️</span>
-                </div>
-                <div class="video-info">
-                    <h3 class="video-title">Vídeo 4 - Avançado</h3>
-                    <p class="video-desc">🔒 Bloqueado</p>
-                </div>
-            </div>
-            <div class="video-card">
-                <div class="video-thumbnail locked">
-                    <span class="play-icon">▶️</span>
-                </div>
-                <div class="video-info">
-                    <h3 class="video-title">Vídeo 5 - Masterclass</h3>
-                    <p class="video-desc">🔒 Bloqueado</p>
-                </div>
-            </div>
-            <div class="video-card">
-                <div class="video-thumbnail locked">
-                    <span class="play-icon">▶️</span>
-                </div>
-                <div class="video-info">
-                    <h3 class="video-title">Vídeo 6 - Projeto Final</h3>
-                    <p class="video-desc">🔒 Bloqueado</p>
-                </div>
             </div>
         </div>
     </section>
@@ -790,6 +827,30 @@
     </div>
 
     <script>
+        // Tela de Confirmação +18
+        const ageOverlay = document.getElementById('ageVerification');
+
+        // Verifica se o usuário já confirmou
+        function checkAgeVerification() {
+            const isVerified = localStorage.getItem('ageVerified');
+            if (isVerified === 'true') {
+                ageOverlay.classList.add('hidden');
+            }
+        }
+
+        // Função para confirmar a idade
+        function confirmAge(isAdult) {
+            if (isAdult) {
+                localStorage.setItem('ageVerified', 'true');
+                ageOverlay.classList.add('hidden');
+            } else {
+                window.location.href = 'https://www.google.com'; // Redireciona para outro site
+            }
+        }
+
+        // Verifica a confirmação ao carregar a página
+        window.addEventListener('DOMContentLoaded', checkAgeVerification);
+
         const modal = document.getElementById('paymentModal');
         const modalContent = document.getElementById('modalContent');
 
