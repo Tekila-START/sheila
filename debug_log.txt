@@ -1,0 +1,12 @@
+2026-06-01 19:43:00
+HTTP Code: 200
+Resposta: {"object":{"identifier":"3961482","offerId":null,"method":"pix","status":"Waiting Payment","amount":49.9,"metadata":null,"fee":{"value":4.28,"netAmount":45.62},"pix":{"qrCode":"00020101021126950014br.gov.bcb.pix0136cab2a7fb-917c-457e-a3ce-d19110d9fab50233Pagamento via PIX - #6J7NO31N5RDW520400005303986540549.905802BR5925MARKETPLACE RECEBIMENT0S 6009SAO PAULO62290525grymtwgovsr62a3kn4nfoj2fp63049F61"},"customer":{"name":"Cliente","email":"cliente@exemplo.com","cpf":"08539374358","phone":"(00) 00000-0000","address":null}},"success":true,"message":"Operação concluída com sucesso","typeMessage":1}
+
+2026-06-01 19:43:17
+HTTP Code: 200
+Resposta: {"object":{"identifier":"3961483","offerId":null,"method":"pix","status":"Waiting Payment","amount":49.9,"metadata":null,"fee":{"value":4.28,"netAmount":45.62},"pix":{"qrCode":"00020101021126950014br.gov.bcb.pix0136cab2a7fb-917c-457e-a3ce-d19110d9fab50233Pagamento via PIX - #5O7X19JPV76G520400005303986540549.905802BR5925MARKETPLACE RECEBIMENT0S 6009SAO PAULO622905252tyicwrx7pr2ssg7xwotiwtao630450DF"},"customer":{"name":"Cliente","email":"cliente@exemplo.com","cpf":"08539374358","phone":"(00) 00000-0000","address":null}},"success":true,"message":"Operação concluída com sucesso","typeMessage":1}
+
+2026-06-01 20:52:19
+HTTP Code: 200
+Resposta: {"object":{"identifier":"3961551","offerId":null,"method":"pix","status":"Waiting Payment","amount":14.9,"metadata":null,"fee":{"value":2.67,"netAmount":12.23},"pix":{"qrCode":"00020101021126950014br.gov.bcb.pix0136cab2a7fb-917c-457e-a3ce-d19110d9fab50233Pagamento via PIX - #MV496EDMX4KG520400005303986540514.905802BR5925MARKETPLACE RECEBIMENT0S 6009SAO PAULO62290525g7jgob6wjgtokbrcgskhakq74630461C9"},"customer":{"name":"Cliente","email":"cliente@exemplo.com","cpf":"08539374358","phone":"(00) 00000-0000","address":null}},"success":true,"message":"Operação concluída com sucesso","typeMessage":1}
+
