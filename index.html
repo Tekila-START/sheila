@@ -193,7 +193,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(0, 0, 0, 0.9);
+            background: rgba(0, 0, 0, 0.95);
             display: none;
             flex-direction: column;
             align-items: center;
@@ -218,9 +218,9 @@
         }
 
         .lock-text {
-            font-size: 14px;
+            font-size: 16px;
             color: var(--text-secondary);
-            margin-bottom: 30px;
+            margin-bottom: 20px;
         }
 
         .price-tag {
@@ -231,15 +231,22 @@
         }
 
         .unlock-btn {
-            background: linear-gradient(135deg, #ff4d6d 0%, #c9184a 100%);
+            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
             color: white;
             border: none;
-            padding: 18px 40px;
+            padding: 16px 40px;
             border-radius: 12px;
             font-size: 18px;
             font-weight: 700;
             cursor: pointer;
             transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .unlock-btn:active {
+            transform: scale(0.98);
         }
 
         /* Timer Badge */
@@ -253,6 +260,7 @@
             font-size: 16px;
             font-weight: 700;
             display: none;
+            z-index: 10;
         }
 
         .timer-badge.active {
@@ -266,7 +274,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(0,0,0,0.8);
+            background: rgba(0,0,0,0.9);
             display: none;
             align-items: center;
             justify-content: center;
@@ -291,7 +299,7 @@
             position: absolute;
             top: 12px;
             right: 12px;
-            background: #242424;
+            background: #333;
             border: none;
             width: 36px;
             height: 36px;
@@ -340,7 +348,7 @@
         }
 
         .pix-code {
-            background: #242424;
+            background: #333;
             padding: 12px;
             border-radius: 8px;
             margin-bottom: 16px;
@@ -348,12 +356,12 @@
 
         .pix-code-title {
             font-size: 12px;
-            color: #666;
+            color: #888;
             margin-bottom: 8px;
         }
 
         .pix-code-text {
-            font-size: 11px;
+            font-size: 10px;
             color: white;
             word-break: break-all;
             line-height: 1.4;
@@ -363,10 +371,23 @@
             background: var(--primary);
             color: white;
             border: none;
-            padding: 10px 20px;
+            padding: 12px 20px;
             border-radius: 8px;
-            font-size: 14px;
-            font-weight: 600;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            width: 100%;
+            margin-bottom: 10px;
+        }
+
+        .check-payment-btn {
+            background: #25D366;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 700;
             cursor: pointer;
             width: 100%;
         }
@@ -379,7 +400,7 @@
         .spinner {
             width: 40px;
             height: 40px;
-            border: 4px solid #333333;
+            border: 4px solid #333;
             border-top-color: var(--primary);
             border-radius: 50%;
             animation: spin 1s linear infinite;
@@ -399,6 +420,29 @@
         footer p {
             font-size: 12px;
             color: #666;
+        }
+
+        /* Success Modal */
+        .success-modal-icon {
+            font-size: 80px;
+            margin-bottom: 20px;
+        }
+
+        .whatsapp-btn {
+            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+            color: white;
+            border: none;
+            padding: 16px 30px;
+            border-radius: 12px;
+            font-size: 18px;
+            font-weight: 700;
+            cursor: pointer;
+            width: 100%;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
         }
     </style>
 </head>
@@ -422,7 +466,7 @@
 
     <div class="banner-section">
         <div class="promo-banner">
-            🔥 ASSISTA O VÍDEO COMPLETO POR APENAS R$9,90
+            🔥 FALE COMIGO NO WHATSAPP
         </div>
 
         <div class="profile-content">
@@ -433,7 +477,7 @@
                         Sheila Bellaver
                         <span class="verified-badge">✅</span>
                     </div>
-                    <div class="profile-username">@sheila_bellaver</div>
+                    <div class="profile-username">@niicca</div>
                 </div>
             </div>
         </div>
@@ -446,15 +490,17 @@
             </video>
 
             <div class="timer-badge" id="timerBadge">
-                <span id="timerText">5s</span>
+                <span id="timerText">7s</span>
             </div>
 
             <div class="lock-overlay" id="lockOverlay">
-                <div class="lock-icon">🔒</div>
-                <h3 class="lock-title">Para continuar assistindo...</h3>
-                <p class="lock-text">Desbloqueie o vídeo completo agora mesmo!</p>
+                <div class="lock-icon">�</div>
+                <h3 class="lock-title">Converse comigo no WhatsApp</h3>
+                <p class="lock-text">Pague uma taxa de R$9,90 para conversar comigo!</p>
                 <div class="price-tag">R$9,90</div>
-                <button class="unlock-btn" onclick="initiatePayment()">Desbloquear Vídeo</button>
+                <button class="unlock-btn" onclick="initiatePayment()">
+                    <span>💬</span> Chamar no WhatsApp
+                </button>
             </div>
         </div>
     </section>
@@ -477,12 +523,15 @@
         // Configurações
         const PREVIEW_DURATION = 7; // segundos
         const PRICE = 9.90;
-        const PLAN_NAME = "Vídeo Completo";
+        const PLAN_NAME = "Acesso ao WhatsApp";
+        const WHATSAPP_NUMBER = "553799230617";
+        const WHATSAPP_MESSAGE = encodeURIComponent("Olá Sheila! Acabei de pagar a taxa!");
 
         // Estado
         let hasUnlocked = false;
         let timeLeft = PREVIEW_DURATION;
         let timerInterval = null;
+        let currentTransactionId = null;
 
         // Elementos do DOM
         const ageOverlay = document.getElementById('ageVerification');
@@ -520,6 +569,7 @@
             
             if (hasUnlocked) {
                 timerBadge.classList.remove('active');
+                redirectToWhatsapp();
                 return;
             }
 
@@ -565,7 +615,11 @@
             localStorage.setItem('videoUnlocked', 'true');
             lockOverlay.classList.remove('active');
             timerBadge.classList.remove('active');
-            videoPlayer.play();
+            redirectToWhatsapp();
+        }
+
+        function redirectToWhatsapp() {
+            window.location.href = `https://wa.me/${WHATSAPP_NUMBER}?text=${WHATSAPP_MESSAGE}`;
         }
 
         // Pagamento
@@ -598,11 +652,17 @@
         function showPayment(data) {
             const qrcode = data.qrcode || '';
             const copiaecola = data.copiaECola || '';
+            
+            // Salvar ID da transação
+            if (data.respostaOriginal && data.respostaOriginal.object && data.respostaOriginal.object.identifier) {
+                currentTransactionId = data.respostaOriginal.object.identifier;
+                localStorage.setItem('currentTransactionId', currentTransactionId);
+            }
 
             modalContent.innerHTML = `
                 <div class="modal-header">
-                    <div class="modal-title">💳 Pagamento via Pix</div>
-                    <div class="modal-subtitle">${data.plano} - R$ ${data.valor.toFixed(2).replace('.', ',')}</div>
+                    <div class="modal-title">💳 Pague a taxa de R$9,90</div>
+                    <div class="modal-subtitle">${data.plano}</div>
                 </div>
 
                 <div class="qrcode-container">
@@ -620,6 +680,23 @@
                 </div>
                 <button class="copy-btn" onclick="copyPixCode()">Copiar Código</button>
                 ` : ''}
+
+                <button class="check-payment-btn" onclick="checkPayment()">
+                    ✅ Já Paguei - Verificar Pagamento
+                </button>
+            `;
+        }
+
+        function showSuccessModal() {
+            modalContent.innerHTML = `
+                <div style="text-align: center;">
+                    <div class="success-modal-icon">✅</div>
+                    <div class="modal-title">Pagamento Confirmado!</div>
+                    <div class="modal-subtitle" style="margin-bottom: 20px;">Redirecionando para o WhatsApp...</div>
+                    <a href="https://wa.me/${WHATSAPP_NUMBER}?text=${WHATSAPP_MESSAGE}" class="whatsapp-btn" onclick="unlockVideo()">
+                        <span>💬</span> Abrir WhatsApp
+                    </a>
+                </div>
             `;
         }
 
@@ -640,6 +717,49 @@
                     showPayment(result);
                 } else {
                     showError(result.mensagem || 'Ocorreu um erro');
+                }
+            } catch (error) {
+                showError('Erro de conexão');
+            }
+        }
+
+        async function checkPayment() {
+            // Verificar se temos ID da transação
+            let transId = currentTransactionId || localStorage.getItem('currentTransactionId');
+            if (!transId) {
+                alert('ID da transação não encontrado! Gere o QR Code novamente.');
+                return;
+            }
+
+            showLoading();
+
+            try {
+                const response = await fetch('https://adroempilhadeiras.com.br/verificar-pagamento.php', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ transactionId: transId })
+                });
+
+                const result = await response.json();
+
+                if (result.sucesso) {
+                    if (result.pago) {
+                        showSuccessModal();
+                    } else {
+                        modalContent.innerHTML = `
+                            <div class="modal-header">
+                                <div class="modal-title">⏳ Aguardando pagamento</div>
+                                <div class="modal-subtitle">Status: ${result.status || 'Aguardando'}</div>
+                            </div>
+                            <div style="margin-top: 20px;">
+                                <button class="check-payment-btn" onclick="checkPayment()">
+                                    🔄 Verificar Novamente
+                                </button>
+                            </div>
+                        `;
+                    }
+                } else {
+                    showError(result.mensagem || 'Erro ao verificar');
                 }
             } catch (error) {
                 showError('Erro de conexão');
