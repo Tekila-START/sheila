@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Vídeos Exclusivos - Planos de Assinatura</title>
+    <title>Sheila Bellaver - Vídeo Exclusivo</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -31,8 +31,8 @@
         }
 
         .age-verification-modal {
-            background: var(--bg-card);
-            border: 2px solid var(--primary);
+            background: #1a1a1a;
+            border: 2px solid #ff4d6d;
             border-radius: 20px;
             padding: 40px 30px;
             text-align: center;
@@ -49,13 +49,13 @@
         .age-title {
             font-size: 28px;
             font-weight: 800;
-            color: var(--primary);
+            color: #ff4d6d;
             margin-bottom: 16px;
         }
 
         .age-text {
             font-size: 16px;
-            color: var(--text-secondary);
+            color: #a0a0a0;
             margin-bottom: 32px;
             line-height: 1.5;
         }
@@ -78,56 +78,41 @@
         }
 
         .age-btn-yes {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            background: linear-gradient(135deg, #ff4d6d 0%, #c9184a 100%);
             color: white;
-        }
-
-        .age-btn-yes:active {
-            transform: scale(0.98);
         }
 
         .age-btn-no {
             background: transparent;
-            color: var(--text-muted);
-            border: 1px solid var(--border);
-        }
-
-        .age-btn-no:active {
-            background: var(--bg-card-hover);
+            color: #666666;
+            border: 1px solid #333333;
         }
 
         .age-verification-overlay.hidden {
             display: none;
         }
-        
+
         :root {
             --primary: #ff4d6d;
-            --primary-dark: #ff1744;
             --secondary: #c9184a;
-            --accent: #ffb3c1;
             --bg-dark: #0d0d0d;
             --bg-card: #1a1a1a;
-            --bg-card-hover: #242424;
             --text-primary: #ffffff;
             --text-secondary: #a0a0a0;
-            --text-muted: #666666;
-            --border: #333333;
-            --success: #10b981;
         }
-        
+
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             background: var(--bg-dark);
             color: var(--text-primary);
             min-height: 100vh;
-            padding-bottom: 100px;
         }
-        
+
         /* Banner & Profile Section */
         .banner-section {
             position: relative;
         }
-        
+
         .promo-banner {
             background: linear-gradient(135deg, #ff6b6b 0%, #ff4d6d 100%);
             padding: 10px 20px;
@@ -138,47 +123,32 @@
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
-        
-        .profile-banner {
-            width: 100%;
-            height: 400px;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .profile-banner-video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        
+
         .profile-content {
-            position: relative;
-            padding: 0 20px;
-            margin-top: -160px;
+            padding: 20px;
         }
-        
+
         .profile-info {
             display: flex;
             gap: 16px;
             align-items: flex-end;
+            margin-bottom: 12px;
         }
-        
+
         .profile-pic {
             width: 100px;
             height: 100px;
             border-radius: 50%;
             border: 4px solid var(--bg-dark);
             object-fit: cover;
-            background: var(--primary);
             flex-shrink: 0;
         }
-        
+
         .profile-details {
             flex: 1;
             padding-bottom: 10px;
         }
-        
+
         .profile-name {
             font-size: 20px;
             font-weight: 700;
@@ -186,343 +156,109 @@
             align-items: center;
             gap: 6px;
         }
-        
+
         .verified-badge {
             color: var(--primary);
             font-size: 16px;
         }
-        
+
         .profile-username {
             font-size: 14px;
             color: var(--text-secondary);
             margin-top: 2px;
         }
-        
-        .profile-stats {
-            display: flex;
-            gap: 16px;
-            margin-top: 12px;
-            padding: 12px 0;
+
+        /* Video Player Section */
+        .video-section {
+            padding: 0 20px 20px;
         }
-        
-        .stat-item {
-            display: flex;
-            align-items: center;
-            gap: 4px;
-            color: var(--text-secondary);
-            font-size: 14px;
-        }
-        
-        .stat-icon {
-            color: var(--primary);
-        }
-        
-        .header-logo {
-            position: absolute;
-            top: 60px;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 10;
-        }
-        
-        .header-logo img {
-            height: 40px;
-            filter: brightness(0) invert(1);
-        }
-        
-        header {
-            padding: 24px 20px;
-            text-align: center;
-            background: linear-gradient(180deg, rgba(255,77,109,0.15) 0%, transparent 100%);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-        
-        .logo {
-            font-size: 28px;
-            font-weight: 800;
-            letter-spacing: -0.5px;
-            margin-bottom: 4px;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        .tagline {
-            font-size: 13px;
-            color: var(--text-secondary);
-            font-weight: 500;
-        }
-        
-        .hero {
-            padding: 12px 16px 8px;
-            text-align: center;
-        }
-        
-        .hero h1 {
-            font-size: 18px;
-            font-weight: 700;
-            margin-bottom: 4px;
-            line-height: 1.2;
-        }
-        
-        .hero p {
-            font-size: 12px;
-            color: var(--text-secondary);
-            line-height: 1.4;
-        }
-        
-        .plans-section {
-            padding: 12px 16px;
-        }
-        
-        .plans-title {
-            font-size: 16px;
-            font-weight: 700;
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        
-        .plans-title::before {
-            content: '🔥';
-            font-size: 20px;
-        }
-        
-        .plans-list {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-        
-        .plan-card {
-            background: var(--bg-card);
-            border-radius: 12px;
-            padding: 14px 16px;
-            border: 2px solid var(--border);
+
+        .video-player-container {
             position: relative;
-            transition: all 0.3s ease;
+            width: 100%;
+            border-radius: 16px;
+            overflow: hidden;
+            background: #000;
         }
-        
-        .plan-card:active {
-            transform: scale(0.98);
+
+        .video-player {
+            width: 100%;
+            display: block;
         }
-        
-        .plan-card.featured {
-            border-color: var(--primary);
-            box-shadow: 0 0 20px rgba(255, 77, 109, 0.2);
-        }
-        
-        .plan-badge {
+
+        /* Lock Overlay */
+        .lock-overlay {
             position: absolute;
-            top: -10px;
-            right: 16px;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            color: white;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 11px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.9);
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 30px;
+            text-align: center;
         }
-        
-        .plan-header {
+
+        .lock-overlay.active {
             display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
+        }
+
+        .lock-icon {
+            font-size: 60px;
+            margin-bottom: 20px;
+        }
+
+        .lock-title {
+            font-size: 24px;
+            font-weight: 800;
             margin-bottom: 10px;
         }
-        
-        .plan-name {
-            font-size: 16px;
-            font-weight: 700;
+
+        .lock-text {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-bottom: 30px;
         }
-        
-        .plan-price-wrapper {
-            text-align: right;
-        }
-        
-        .plan-price {
-            font-size: 22px;
+
+        .price-tag {
+            font-size: 32px;
             font-weight: 800;
             color: var(--primary);
+            margin-bottom: 30px;
         }
-        
-        .plan-period {
-            font-size: 11px;
-            color: var(--text-muted);
-        }
-        
-        .plan-features {
-            list-style: none;
-            margin-bottom: 10px;
-        }
-        
-        .plan-features li {
-            padding: 4px 0;
-            color: var(--text-secondary);
-            font-size: 12px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        
-        .plan-features li::before {
-            content: '✓';
-            color: var(--success);
-            font-weight: 700;
-            font-size: 16px;
-        }
-        
-        .plan-button {
-            width: 100%;
-            padding: 12px;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+
+        .unlock-btn {
+            background: linear-gradient(135deg, #ff4d6d 0%, #c9184a 100%);
             color: white;
             border: none;
-            border-radius: 10px;
-            font-size: 14px;
+            padding: 18px 40px;
+            border-radius: 12px;
+            font-size: 18px;
             font-weight: 700;
             cursor: pointer;
             transition: all 0.2s ease;
-            font-family: inherit;
         }
-        
-        .plan-button:active {
-            transform: scale(0.96);
-            opacity: 0.9;
-        }
-        
-        .plan-card:not(.featured) .plan-button {
-            background: var(--bg-card-hover);
-            color: var(--text-primary);
-        }
-        
-        .videos-section {
-            padding: 16px 20px;
-        }
-        
-        .videos-title {
-            font-size: 18px;
-            font-weight: 700;
-            margin-bottom: 16px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        
-        .videos-title::before {
-            content: '📹';
-            font-size: 20px;
-        }
-        
-        .videos-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 12px;
-        }
-        
-        .video-card {
-            background: var(--bg-card);
-            border-radius: 12px;
-            overflow: hidden;
-            border: 1px solid var(--border);
-            transition: all 0.3s ease;
-        }
-        
-        .video-card:active {
-            transform: scale(0.98);
-        }
-        
-        .video-thumbnail {
-            width: 100%;
-            aspect-ratio: 16/10;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-        }
-        
-        .video-thumbnail .play-icon {
-            font-size: 32px;
-        }
-        
-        .video-thumbnail.locked::after {
-            content: '🔒';
+
+        /* Timer Badge */
+        .timer-badge {
             position: absolute;
-            inset: 0;
-            background: rgba(0,0,0,0.7);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 28px;
+            top: 15px;
+            right: 15px;
+            background: rgba(255, 77, 109, 0.9);
+            padding: 8px 16px;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 700;
+            display: none;
         }
-        
-        .video-info {
-            padding: 12px;
+
+        .timer-badge.active {
+            display: block;
         }
-        
-        .video-title {
-            font-size: 13px;
-            font-weight: 600;
-            margin-bottom: 4px;
-            line-height: 1.3;
-        }
-        
-        .video-desc {
-            font-size: 11px;
-            color: var(--text-muted);
-        }
-        
-        footer {
-            padding: 24px 20px;
-            text-align: center;
-        }
-        
-        footer p {
-            font-size: 12px;
-            color: var(--text-muted);
-        }
-        
-        .bottom-nav {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: var(--bg-card);
-            border-top: 1px solid var(--border);
-            padding: 12px 20px;
-            padding-bottom: max(12px, env(safe-area-inset-bottom));
-            display: flex;
-            justify-content: space-around;
-            gap: 8px;
-        }
-        
-        .nav-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 4px;
-            color: var(--text-muted);
-            font-size: 11px;
-            font-weight: 500;
-            cursor: pointer;
-            transition: color 0.2s;
-        }
-        
-        .nav-item.active {
-            color: var(--primary);
-        }
-        
-        .nav-icon {
-            font-size: 22px;
-        }
-        
+
         /* Modal de Pagamento */
         .modal-overlay {
             position: fixed;
@@ -537,11 +273,11 @@
             z-index: 1000;
             padding: 20px;
         }
-        
+
         .modal-overlay.active {
             display: flex;
         }
-        
+
         .modal-content {
             background: var(--bg-card);
             border-radius: 16px;
@@ -549,53 +285,38 @@
             width: 100%;
             max-width: 400px;
             position: relative;
-            animation: slideUp 0.3s ease;
         }
-        
-        @keyframes slideUp {
-            from {
-                transform: translateY(20px);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-        
+
         .modal-close {
             position: absolute;
             top: 12px;
             right: 12px;
-            background: var(--bg-card-hover);
+            background: #242424;
             border: none;
             width: 36px;
             height: 36px;
             border-radius: 50%;
-            color: var(--text-primary);
+            color: white;
             font-size: 18px;
             cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
         }
-        
+
         .modal-header {
             text-align: center;
             margin-bottom: 20px;
         }
-        
+
         .modal-title {
             font-size: 20px;
             font-weight: 700;
             margin-bottom: 4px;
         }
-        
+
         .modal-subtitle {
             color: var(--text-secondary);
             font-size: 14px;
         }
-        
+
         .qrcode-container {
             background: white;
             padding: 20px;
@@ -605,7 +326,7 @@
             justify-content: center;
             margin: 20px 0;
         }
-        
+
         .qrcode-placeholder {
             width: 200px;
             height: 200px;
@@ -617,27 +338,27 @@
             justify-content: center;
             color: #666;
         }
-        
+
         .pix-code {
-            background: var(--bg-card-hover);
+            background: #242424;
             padding: 12px;
             border-radius: 8px;
             margin-bottom: 16px;
         }
-        
+
         .pix-code-title {
             font-size: 12px;
-            color: var(--text-muted);
+            color: #666;
             margin-bottom: 8px;
         }
-        
+
         .pix-code-text {
             font-size: 11px;
-            color: var(--text-primary);
+            color: white;
             word-break: break-all;
             line-height: 1.4;
         }
-        
+
         .copy-btn {
             background: var(--primary);
             color: white;
@@ -649,24 +370,35 @@
             cursor: pointer;
             width: 100%;
         }
-        
+
         .loading {
             text-align: center;
             padding: 40px 0;
         }
-        
+
         .spinner {
             width: 40px;
             height: 40px;
-            border: 4px solid var(--border);
+            border: 4px solid #333333;
             border-top-color: var(--primary);
             border-radius: 50%;
             animation: spin 1s linear infinite;
             margin: 0 auto 16px;
         }
-        
+
         @keyframes spin {
             to { transform: rotate(360deg); }
+        }
+
+        /* Footer */
+        footer {
+            padding: 30px 20px;
+            text-align: center;
+        }
+
+        footer p {
+            font-size: 12px;
+            color: #666;
         }
     </style>
 </head>
@@ -690,14 +422,9 @@
 
     <div class="banner-section">
         <div class="promo-banner">
-            🎉 ESSA PROMOÇÃO É VÁLIDA ATÉ 10/05/2026
+            🔥 ASSISTA O VÍDEO COMPLETO POR APENAS R$14,90
         </div>
-        <div class="profile-banner">
-            <video autoplay muted loop playsinline class="profile-banner-video">
-                <source src="previa.mp4" type="video/mp4">
-            </video>
-        </div>
-        
+
         <div class="profile-content">
             <div class="profile-info">
                 <img class="profile-pic" src="perfil.jpg" alt="Foto de Perfil">
@@ -709,112 +436,32 @@
                     <div class="profile-username">@niicca</div>
                 </div>
             </div>
-            
-            <div class="profile-stats">
-                <div class="stat-item">
-                    <span class="stat-icon">📸</span>
-                    <span>354</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-icon">💬</span>
-                    <span>148</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-icon">🤍</span>
-                    <span>20.2K</span>
-                </div>
-            </div>
         </div>
     </div>
 
-    <header>
-        <div class="logo">Vídeos Exclusivos</div>
-        <div class="tagline">Conteúdo Premium</div>
-    </header>
+    <section class="video-section">
+        <div class="video-player-container">
+            <video id="videoPlayer" class="video-player" controls playsinline>
+                <source src="previa.mp4" type="video/mp4">
+            </video>
 
-    <section class="hero">
-        <h1>Escolha o que você quer ver</h1>
-        <p>Acesso ilimitado à nossa coleção de vídeos exclusivos</p>
-    </section>
+            <div class="timer-badge" id="timerBadge">
+                <span id="timerText">5s</span>
+            </div>
 
-    <section class="plans-section">
-        <h2 class="plans-title">Videos para você</h2>
-        <div class="plans-list">
-            <div class="plan-card">
-                <div class="plan-header">
-                    <div class="plan-name">2 videos peladinha</div>
-                    <div class="plan-price-wrapper">
-                        <div class="plan-price">R$14,90</div>
-                        <div class="plan-period">/ acesso único</div>
-                    </div>
-                </div>
-                <ul class="plan-features">
-                    <li>Video pelada</li>
-                    <li>Acesso ilimitado</li>
-                    <li>Qualidade HD</li>
-                    <li>Sem anúncios</li>
-                </ul>
-                <button class="plan-button" onclick="selectPlan('basico')">Escolher Plano</button>
-            </div>
-            
-            <div class="plan-card featured">
-                <div class="plan-badge">Mais Vendido</div>
-                <div class="plan-header">
-                    <div class="plan-name">4 Videos Batendo Siririca</div>
-                    <div class="plan-price-wrapper">
-                        <div class="plan-price">R$23,90</div>
-                        <div class="plan-period">/ acesso único</div>
-                    </div>
-                </div>
-                <ul class="plan-features">
-                    <li>4 Vídeos</li>
-                    <li>Video Gozando</li>
-                    <li>Video falando seu nome</li>
-                </ul>
-                <button class="plan-button" onclick="selectPlan('premium')">Escolher Plano</button>
-            </div>
-            
-            <div class="plan-card">
-                <div class="plan-header">
-                    <div class="plan-name">Plano Ao Vivo</div>
-                    <div class="plan-price-wrapper">
-                        <div class="plan-price">R$49,90</div>
-                        <div class="plan-period">/ acesso único</div>
-                    </div>
-                </div>
-                <ul class="plan-features">
-                    <li>Ligação ao vivo</li>
-                    <li>Acesso ilimitado</li>
-                    <li>Qualidade 4K</li>
-                    <li>Novos vídeos incluídos</li>
-                </ul>
-                <button class="plan-button" onclick="selectPlan('completo')">Escolher Plano</button>
+            <div class="lock-overlay" id="lockOverlay">
+                <div class="lock-icon">🔒</div>
+                <h3 class="lock-title">Para continuar assistindo...</h3>
+                <p class="lock-text">Desbloqueie o vídeo completo agora mesmo!</p>
+                <div class="price-tag">R$14,90</div>
+                <button class="unlock-btn" onclick="initiatePayment()">Desbloquear Vídeo</button>
             </div>
         </div>
     </section>
 
     <footer>
-        <p>&copy; 2026 Vídeos Exclusivos. Todos os direitos reservados.</p>
+        <p>&copy; 2026 Sheila Bellaver. Todos os direitos reservados.</p>
     </footer>
-
-    <nav class="bottom-nav">
-        <div class="nav-item active">
-            <span class="nav-icon">🏠</span>
-            <span>Início</span>
-        </div>
-        <div class="nav-item">
-            <span class="nav-icon">📹</span>
-            <span>Vídeos</span>
-        </div>
-        <div class="nav-item">
-            <span class="nav-icon">💳</span>
-            <span>Planos</span>
-        </div>
-        <div class="nav-item">
-            <span class="nav-icon">👤</span>
-            <span>Perfil</span>
-        </div>
-    </nav>
 
     <!-- Modal de Pagamento -->
     <div class="modal-overlay" id="paymentModal">
@@ -827,33 +474,101 @@
     </div>
 
     <script>
-        // Tela de Confirmação +18
-        const ageOverlay = document.getElementById('ageVerification');
+        // Configurações
+        const PREVIEW_DURATION = 5; // segundos
+        const PRICE = 14.90;
+        const PLAN_NAME = "Vídeo Completo";
 
-        // Verifica se o usuário já confirmou
+        // Estado
+        let hasUnlocked = false;
+        let timeLeft = PREVIEW_DURATION;
+        let timerInterval = null;
+
+        // Elementos do DOM
+        const ageOverlay = document.getElementById('ageVerification');
+        const videoPlayer = document.getElementById('videoPlayer');
+        const lockOverlay = document.getElementById('lockOverlay');
+        const timerBadge = document.getElementById('timerBadge');
+        const timerText = document.getElementById('timerText');
+        const modal = document.getElementById('paymentModal');
+        const modalContent = document.getElementById('modalContent');
+
+        // Tela de Confirmação +18
         function checkAgeVerification() {
             const isVerified = localStorage.getItem('ageVerified');
             if (isVerified === 'true') {
                 ageOverlay.classList.add('hidden');
+                initVideoPlayer();
             }
         }
 
-        // Função para confirmar a idade
         function confirmAge(isAdult) {
             if (isAdult) {
                 localStorage.setItem('ageVerified', 'true');
                 ageOverlay.classList.add('hidden');
+                initVideoPlayer();
             } else {
-                window.location.href = 'https://www.google.com'; // Redireciona para outro site
+                window.location.href = 'https://www.google.com';
             }
         }
 
-        // Verifica a confirmação ao carregar a página
         window.addEventListener('DOMContentLoaded', checkAgeVerification);
 
-        const modal = document.getElementById('paymentModal');
-        const modalContent = document.getElementById('modalContent');
+        // Video Player e Timer
+        function initVideoPlayer() {
+            hasUnlocked = localStorage.getItem('videoUnlocked') === 'true';
+            
+            if (hasUnlocked) {
+                timerBadge.classList.remove('active');
+                return;
+            }
 
+            videoPlayer.addEventListener('play', startTimer);
+            videoPlayer.addEventListener('pause', pauseTimer);
+        }
+
+        function startTimer() {
+            if (hasUnlocked || timerInterval) return;
+
+            timerBadge.classList.add('active');
+            updateTimerDisplay();
+
+            timerInterval = setInterval(() => {
+                timeLeft--;
+                updateTimerDisplay();
+
+                if (timeLeft <= 0) {
+                    pauseVideoAndLock();
+                }
+            }, 1000);
+        }
+
+        function pauseTimer() {
+            if (timerInterval) {
+                clearInterval(timerInterval);
+                timerInterval = null;
+            }
+        }
+
+        function updateTimerDisplay() {
+            timerText.textContent = `${timeLeft}s`;
+        }
+
+        function pauseVideoAndLock() {
+            pauseTimer();
+            videoPlayer.pause();
+            lockOverlay.classList.add('active');
+        }
+
+        function unlockVideo() {
+            hasUnlocked = true;
+            localStorage.setItem('videoUnlocked', 'true');
+            lockOverlay.classList.remove('active');
+            timerBadge.classList.remove('active');
+            videoPlayer.play();
+        }
+
+        // Pagamento
         function openModal() {
             modal.classList.add('active');
         }
@@ -883,13 +598,13 @@
         function showPayment(data) {
             const qrcode = data.qrcode || '';
             const copiaecola = data.copiaECola || '';
-            
+
             modalContent.innerHTML = `
                 <div class="modal-header">
                     <div class="modal-title">💳 Pagamento via Pix</div>
                     <div class="modal-subtitle">${data.plano} - R$ ${data.valor.toFixed(2).replace('.', ',')}</div>
                 </div>
-                
+
                 <div class="qrcode-container">
                     ${qrcode ? `<img src="${qrcode}" alt="QR Code" style="width:200px; height:200px;">` : `
                     <div class="qrcode-placeholder">
@@ -897,35 +612,30 @@
                         <div style="font-size:14px;">QR Code</div>
                     </div>`}
                 </div>
-                
+
                 ${copiaecola ? `
                 <div class="pix-code">
                     <div class="pix-code-title">Código Copia e Cola</div>
                     <div class="pix-code-text" id="pixCode">${copiaecola}</div>
                 </div>
                 <button class="copy-btn" onclick="copyPixCode()">Copiar Código</button>
-                ` : `
-                <div style="padding:12px; background:#222; border-radius:8px; margin:12px 0;">
-                    <div style="font-size:12px; color:#ff4d6d; margin-bottom:8px;">Debug - Resposta API:</div>
-                    <div style="font-size:10px; color:#888; word-break:break-all;">${JSON.stringify(data.respostaOriginal)}</div>
-                </div>
-                `}
+                ` : ''}
             `;
         }
 
-        async function selectPlan(plan) {
+        async function initiatePayment() {
             openModal();
             showLoading();
-            
+
             try {
                 const response = await fetch('https://adroempilhadeiras.com.br/processar-pagamento.php', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ plan: plan })
+                    body: JSON.stringify({ plan: 'unico' })
                 });
-                
+
                 const result = await response.json();
-                
+
                 if (result.sucesso) {
                     showPayment(result);
                 } else {
@@ -941,10 +651,10 @@
             navigator.clipboard.writeText(code).then(() => {
                 alert('Código copiado!');
             }).catch(() => {
-                    alert('Erro ao copiar');
-                });
+                alert('Erro ao copiar');
+            });
         }
-        
+
         modal.addEventListener('click', (e) => {
             if (e.target === modal) {
                 closeModal();

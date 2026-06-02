@@ -19,17 +19,9 @@ $plan = $data['plan'] ?? '';
 
 // Mapear planos para valores
 $planos = [
-    'basico' => [
+    'unico' => [
         'valor' => 14.90,
-        'nome' => 'Plano Básico'
-    ],
-    'premium' => [
-        'valor' => 23.90,
-        'nome' => 'Plano Premium'
-    ],
-    'completo' => [
-        'valor' => 49.90,
-        'nome' => 'Plano Completo'
+        'nome' => 'Vídeo Completo'
     ]
 ];
 
@@ -64,15 +56,11 @@ curl_setopt($ch, CURLOPT_HTTPHEADER, [
 ]);
 curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($dadosApi));
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false); // Para desenvolvimento (remover em produção se possível)
+curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 
 $resposta = curl_exec($ch);
 $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-$erroCurl = curl_error($ch);
 curl_close($ch);
-
-// Salvar log da resposta para debug
-file_put_contents('debug_log.txt', date('Y-m-d H:i:s') . "\n" . "HTTP Code: " . $httpCode . "\n" . "Resposta: " . $resposta . "\n\n", FILE_APPEND);
 
 // Processar resposta
 $respostaDecodificada = json_decode($resposta, true);
@@ -82,7 +70,6 @@ $qrcode = '';
 $copiaECola = '';
 
 if ($respostaDecodificada) {
-    // Percorrer todo o array para encontrar campos relevantes
     array_walk_recursive($respostaDecodificada, function($value, $key) use (&$qrcode, &$copiaECola) {
         $keyLower = strtolower($key);
         if (empty($qrcode) && (strpos($keyLower, 'qrcode') !== false || strpos($keyLower, 'qr_code') !== false || strpos($keyLower, 'qrimage') !== false)) {
@@ -91,16 +78,11 @@ if ($respostaDecodificada) {
             }
         }
         if (empty($copiaECola) && (strpos($keyLower, 'copia') !== false || strpos($keyLower, 'pix') !== false || strpos($keyLower, 'code') !== false)) {
-            if (strlen($value) > 20) { // Código Pix é longo
+            if (strlen($value) > 20) {
                 $copiaECola = $value;
             }
         }
     });
-}
-
-// Se temos o código copia e cola mas não o QR Code, gerar o QR Code usando uma API gratuita
-if (empty($qrcode) && !empty($copiaECola)) {
-    $qrcode = 'https://api.qrserver.com/v1/create-qr-code/?size=256x256&data=' . urlencode($copiaECola);
 }
 
 if ($httpCode === 200 || $httpCode === 201) {
@@ -117,8 +99,7 @@ if ($httpCode === 200 || $httpCode === 201) {
         'sucesso' => false,
         'mensagem' => 'Erro ao gerar pagamento',
         'detalhes' => $respostaDecodificada,
-        'httpCode' => $httpCode,
-        'erroCurl' => $erroCurl
+        'httpCode' => $httpCode
     ]);
 }
 ?>
