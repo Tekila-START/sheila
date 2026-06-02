@@ -14,20 +14,33 @@ $apiUrl = 'https://api.risepay.com.br/api/External/Transactions';
 $secretToken = '79e58ef673d96fde29880ee925c743c185d6942cac5860f1a56e5cab4483b7df';
 
 // Dados recebidos do frontend
-$data = json_decode(file_get_contents('php://input'), true);
+$input = file_get_contents('php://input');
+$data = json_decode($input, true);
 $plan = $data['plan'] ?? '';
 
-// Mapear planos para valores
+// Mapear planos para valores (aceita todos os planos antigos também)
 $planos = [
     'unico' => [
         'valor' => 14.90,
         'nome' => 'Vídeo Completo'
+    ],
+    'basico' => [
+        'valor' => 14.90,
+        'nome' => 'Vídeo Completo'
+    ],
+    'premium' => [
+        'valor' => 23.90,
+        'nome' => 'Vídeo Completo'
+    ],
+    'completo' => [
+        'valor' => 49.90,
+        'nome' => 'Vídeo Completo'
     ]
 ];
 
+// Se o plano não existir, usa o padrão
 if (!isset($planos[$plan])) {
-    echo json_encode(['sucesso' => false, 'mensagem' => 'Plano inválido']);
-    exit;
+    $plan = 'unico';
 }
 
 $planoSelecionado = $planos[$plan];
@@ -65,24 +78,16 @@ curl_close($ch);
 // Processar resposta
 $respostaDecodificada = json_decode($resposta, true);
 
-// Extrair dados do Pix de forma flexível
-$qrcode = '';
+// Extrair dados do Pix - sabemos o caminho exato agora!
 $copiaECola = '';
+if ($respostaDecodificada && isset($respostaDecodificada['object']['pix']['qrCode'])) {
+    $copiaECola = $respostaDecodificada['object']['pix']['qrCode'];
+}
 
-if ($respostaDecodificada) {
-    array_walk_recursive($respostaDecodificada, function($value, $key) use (&$qrcode, &$copiaECola) {
-        $keyLower = strtolower($key);
-        if (empty($qrcode) && (strpos($keyLower, 'qrcode') !== false || strpos($keyLower, 'qr_code') !== false || strpos($keyLower, 'qrimage') !== false)) {
-            if (filter_var($value, FILTER_VALIDATE_URL) || strpos($value, 'data:image') === 0) {
-                $qrcode = $value;
-            }
-        }
-        if (empty($copiaECola) && (strpos($keyLower, 'copia') !== false || strpos($keyLower, 'pix') !== false || strpos($keyLower, 'code') !== false)) {
-            if (strlen($value) > 20) {
-                $copiaECola = $value;
-            }
-        }
-    });
+// Gerar QR Code usando o código Copia e Cola
+$qrcode = '';
+if (!empty($copiaECola)) {
+    $qrcode = 'https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=' . urlencode($copiaECola);
 }
 
 if ($httpCode === 200 || $httpCode === 201) {
@@ -99,7 +104,8 @@ if ($httpCode === 200 || $httpCode === 201) {
         'sucesso' => false,
         'mensagem' => 'Erro ao gerar pagamento',
         'detalhes' => $respostaDecodificada,
-        'httpCode' => $httpCode
+        'httpCode' => $httpCode,
+        'respostaBruta' => $resposta
     ]);
 }
 ?>
