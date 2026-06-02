@@ -21,11 +21,11 @@ $plan = $data['plan'] ?? '';
 // Mapear planos para valores (aceita todos os planos antigos também)
 $planos = [
     'unico' => [
-        'valor' => 9.90,
+        'valor' => 4.90,
         'nome' => 'Acesso ao WhatsApp'
     ],
     'basico' => [
-        'valor' => 9.90,
+        'valor' => 4.90,
         'nome' => 'Acesso ao WhatsApp'
     ],
     'premium' => [
