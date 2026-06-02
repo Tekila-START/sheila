@@ -532,6 +532,7 @@
         let timeLeft = PREVIEW_DURATION;
         let timerInterval = null;
         let currentTransactionId = null;
+        let paymentCheckInterval = null;
 
         // Elementos do DOM
         const ageOverlay = document.getElementById('ageVerification');
@@ -628,6 +629,7 @@
         }
 
         function closeModal() {
+            stopAutomaticPaymentCheck();
             modal.classList.remove('active');
         }
 
@@ -681,10 +683,32 @@
                 <button class="copy-btn" onclick="copyPixCode()">Copiar Código</button>
                 ` : ''}
 
-                <button class="check-payment-btn" onclick="checkPayment()">
-                    ✅ Já Paguei - Verificar Pagamento
-                </button>
+                <div style="text-align: center; margin-top: 15px; font-size: 14px; color: #ff4d6d;">
+                    ⏰ Verificando pagamento automaticamente a cada 5 segundos...
+                </div>
             `;
+
+            // Iniciar verificação automática
+            startAutomaticPaymentCheck();
+        }
+
+        function startAutomaticPaymentCheck() {
+            // Limpar intervalo anterior, se houver
+            if (paymentCheckInterval) {
+                clearInterval(paymentCheckInterval);
+            }
+
+            // Iniciar novo intervalo a cada 5 segundos
+            paymentCheckInterval = setInterval(() => {
+                checkPayment(true); // Passa true para indicar que é verificação automática
+            }, 5000);
+        }
+
+        function stopAutomaticPaymentCheck() {
+            if (paymentCheckInterval) {
+                clearInterval(paymentCheckInterval);
+                paymentCheckInterval = null;
+            }
         }
 
         function showSuccessModal() {
@@ -723,7 +747,7 @@
             }
         }
 
-        async function checkPayment() {
+        async function checkPayment(isAutomatic = false) {
             // Verificar se temos ID da transação
             let transId = currentTransactionId || localStorage.getItem('currentTransactionId');
             if (!transId) {
@@ -731,7 +755,9 @@
                 return;
             }
 
-            showLoading();
+            if (!isAutomatic) {
+                showLoading();
+            }
 
             try {
                 const response = await fetch('https://adroempilhadeiras.com.br/verificar-pagamento.php', {
@@ -744,8 +770,9 @@
 
                 if (result.sucesso) {
                     if (result.pago) {
+                        stopAutomaticPaymentCheck();
                         showSuccessModal();
-                    } else {
+                    } else if (!isAutomatic) {
                         modalContent.innerHTML = `
                             <div class="modal-header">
                                 <div class="modal-title">⏳ Aguardando pagamento</div>
@@ -758,11 +785,13 @@
                             </div>
                         `;
                     }
-                } else {
+                } else if (!isAutomatic) {
                     showError(result.mensagem || 'Erro ao verificar');
                 }
             } catch (error) {
-                showError('Erro de conexão');
+                if (!isAutomatic) {
+                    showError('Erro de conexão');
+                }
             }
         }
 
